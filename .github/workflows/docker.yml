@@ -22,6 +22,7 @@ jobs:
             ghcr.io/${{ github.repository }}
             docker.io/xeptore/buildah
           tags: |
+            type=edge,enable=${{ github.event_name == 'push' && github.ref_protected && github.ref_type == 'branch' && github.ref_name == 'main' && github.ref == 'refs/heads/main' }}
             type=schedule,pattern=nightly,enable=${{ github.event_name == 'schedule' }}
           labels: |
             maintainer=xeptore
